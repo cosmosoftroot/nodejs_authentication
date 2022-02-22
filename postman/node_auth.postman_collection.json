@@ -9,6 +9,38 @@
 			"name": "products",
 			"item": [
 				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGYwYjI4MDBjY2M0NjZhMWIxNGVmNCIsImlhdCI6MTY0NTE1MzI5NCwiZXhwIjoxNjQ1MjM5Njk0fQ.sjSlJTxtwYeELzanGI8evwF_ulj6l5sKbpfD2wKfjNk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ipad\",\n    \"category\":  \"tablets\",\n    \"price\": 1000000,\n    \"imgUrl\":  \"https://metrocolombiafood.vteximg.com.br/arquivos/ids/332354-1000-1000/image-7646208871894d588f769eba0e943f17.jpg?v=637704213441500000\"\n\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/products",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Products",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -21,12 +53,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/products",
-							"protocol": "http",
+							"raw": "{{BASE_API_URL}}/products",
 							"host": [
-								"localhost"
+								"{{BASE_API_URL}}"
 							],
-							"port": "5000",
 							"path": [
 								"products"
 							]
@@ -35,7 +65,94 @@
 					"response": []
 				},
 				{
-					"name": "Create Product",
+					"name": "Get Product By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_API_URL}}/products/61f21e9116307a836ad73700",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"products",
+								"61f21e9116307a836ad73700"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGM1OWU3NTZmYjRlMzJlODQxOWMzMyIsImlhdCI6MTY0NTA1MzU5MCwiZXhwIjoxNjQ1MTM5OTkwfQ.95w559v8GT35nm7W_8zVy8i2V6l7IBExNtnZ1_7R6W0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_API_URL}}/products/61ef768dccf030f6d3e1a807",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"products",
+								"61ef768dccf030f6d3e1a807"
+							],
+							"query": [
+								{
+									"key": "x-access-token",
+									"value": "dsf",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product By Id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGM1OWU3NTZmYjRlMzJlODQxOWMzMyIsImlhdCI6MTY0NTAzOTAyMiwiZXhwIjoxNjQ1MTI1NDIyfQ.HITDk8QGJ4t-3OvNSfIJkjV1j-UCn8JiLRHB2Z6BR1Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ipad Pro 2022\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/products/620d4a79eb61989bec2b485baaaa",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"products",
+								"620d4a79eb61989bec2b485baaaa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -47,17 +164,72 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"ASUS VivoBook\",\n    \"category\":  \"laptops\",\n    \"price\": 1000000,\n    \"imgUrl\":  \"https://metrocolombiafood.vteximg.com.br/arquivos/ids/332354-1000-1000/image-7646208871894d588f769eba0e943f17.jpg?v=637704213441500000\"\n\n}"
+							"raw": "{\n    \"username\": \"moderator\",\n    \"email\": \"moderator@gmail.com\",\n    \"password\":  \"password\",\n    \"roles\": [\"moderator\"]\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/products",
-							"protocol": "http",
+							"raw": "{{BASE_API_URL}}/auth/signup",
 							"host": [
-								"localhost"
+								"{{BASE_API_URL}}"
 							],
-							"port": "5000",
 							"path": [
-								"products"
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tesla@gmail.com\",\n    \"password\":  \"7777777\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_API_URL}}/auth/signin",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGYwYzYxYjBkYzU5ZjdiYWFlM2VkOSIsImlhdCI6MTY0NTE1MzM3NywiZXhwIjoxNjQ1MjM5Nzc3fQ.JIOZM-oLQjQ1Go4cAPQUmyDs84uS1BjzCeVHuU9J_fw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_API_URL}}/users",
+							"host": [
+								"{{BASE_API_URL}}"
+							],
+							"path": [
+								"users"
 							]
 						}
 					},
